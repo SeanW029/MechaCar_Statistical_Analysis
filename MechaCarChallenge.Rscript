@@ -1,0 +1,10 @@
+install.packages("tidyverse")
+install.packages("jsonlite")
+library(dplyr)
+MechaCar_table <- read.csv(file='MechaCar_mpg.csv',check.names=F, stringsAsFactors = F)
+summary(MechaCar_table)
+lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data=MechaCar_table) #generate multiple linear regression model)
+summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data=MechaCar_table)) #generate summary statistics)
+
+total_summary <- read.csv(file='Suspension_Coil.csv',check.names=F, stringsAsFactors = F)
+summary_table <- total_summary %>% group_by(condition) %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=Variance(PSI), SD=sd(PSI)) #create summary table with multiple columns
